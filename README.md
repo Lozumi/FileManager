@@ -1,22 +1,28 @@
 # FileManager
 A java project for exam 2.
 
+Author：Lozumi
+
+Version：1.0
+
+Repository：https://github.com/Lozumi/FileManager
+
 ## Function
 
 ![uml.jpg](src%2Fmain%2Fresources%2Fuml.jpg)
 
 ## Todo
 ### Classes
-- [ ] FileSystem
-- [ ] Folder
+- [x] FileSystem
+- [x] Folder
 - [x] FolderItem
-- [ ] FIle
+- [x] FIle
 - [x] Owner
 
 ### Interface
-- [ ] java.long.Iterable<FolderItem>
+- [x] java.long.Iterable<FolderItem>
 
 ### Process
-- [ ] Build classes
-- [ ] Test
-- [ ] Write Javadoc
+- [x] Build classes
+- [x] Test
+- [] Write Javadoc

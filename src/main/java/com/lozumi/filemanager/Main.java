@@ -6,9 +6,12 @@ import java.io.IOException;
  * 主类
  *
  * <p>系统的主方法。
- *Y
- * @author Lozumi
- * @version 1.0
+ *
+ * <p>这个类包含系统的主方法，它调用了子系统的主方法。
+ *
+ * <p>作者：Lozumi
+ * 版本：1.0
+ * 仓库：https://github.com/Lozumi/FileManager
  */
 public class Main {
     /**
