@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * <p>作者：Lozumi
  * 版本：1.0
- * 仓库：https://github.com/Lozumi/FileManager
+ * 仓库：<a href="Lozumi/NAMS-GUI">https://github.com/Lozumi/FileManager</a>
  * </p>
  */
 public class FileSystem {
