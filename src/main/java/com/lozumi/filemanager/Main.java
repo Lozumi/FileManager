@@ -6,7 +6,7 @@ import java.io.IOException;
  * 主类
  *
  * <p>系统的主方法。
- *
+ *Y
  * @author Lozumi
  * @version 1.0
  */

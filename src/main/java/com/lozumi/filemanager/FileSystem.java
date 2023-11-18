@@ -12,7 +12,7 @@ public class FileSystem {
     private final ArrayList<FolderItem> folderItemList = new ArrayList<>();
 
     private FileSystem() {
-        stdOut.println("Welcome to File Manager made by Nico (2022303251).\t请确认数据文件\"folderItem.dat\"位于resources目录对应包下。(Y/N)");
+        stdOut.println("Welcome to File Manager made by Lozumi (2022303251).\t请确认数据文件\"folderItem.dat\"位于resources目录对应包下。(Y/N)");
         try {
             String isConfirm = stdIn.readLine();
             if (Objects.equals(isConfirm, "Y")) {
@@ -49,16 +49,16 @@ public class FileSystem {
                 FolderItem folderItem = parseFolderItem(line);
                 if (folderItem != null) {
                     folderItemList.add(folderItem);
-
                     // 判断是否有父文件夹，如果有，则将该FolderItem添加到父文件夹的folderItemList中
                     if (folderItem.getPath() != null && !folderItem.getPath().isEmpty()) {
-                        String parentPath = getParentPath(folderItem.getPath());
-                        Folder parentFolder = findFolderByPath(parentPath);
+                        String path = folderItem.getPath();
+                        Folder parentFolder = findFolderByPath(path);
+                        String type=folderItem.getClass().getSimpleName();
                         if (parentFolder != null) {
                             parentFolder.addFolderItem(folderItem);
-                            stdOut.println(folderItem.getName()+"位于"+folderItem.getPath()+"，归属文件夹"+parentFolder+"。");
+                            stdOut.println(type+" "+folderItem.getName()+"位于"+path+"，归属文件夹"+ parentFolder.getName() +"。");
                         } else {
-                            stdOut.println(folderItem.getName()+"位于根目录。");
+                            stdOut.println(type+" "+folderItem.getName()+"位于根目录。");
                         }
                     }
                 }
@@ -69,20 +69,15 @@ public class FileSystem {
         }
     }
 
-    // 获取父路径（删除最后一级）
-    private String getParentPath(String path) {
-        int lastSeparatorIndex = path.lastIndexOf("/");
-        if (lastSeparatorIndex > 0) {
-            return path.substring(0, lastSeparatorIndex);
-        } else {
-            return "";
+    // 根据path查找Folder
+    public Folder findFolderByPath(String path) {
+        String parentFolderName = null;
+        String[] pathSegments = path.split("/");
+        if (pathSegments.length > 1) {
+            parentFolderName = pathSegments[pathSegments.length - 1];  // 获取倒数第二个路径段
         }
-    }
-
-    // 根据路径查找Folder
-    private Folder findFolderByPath(String path) {
         for (FolderItem item : folderItemList) {
-            if (item instanceof Folder && item.getPath().equals(path)) {
+            if (item instanceof Folder && item.getName().equals(parentFolderName)) {
                 return (Folder) item;
             }
         }
@@ -124,10 +119,10 @@ public class FileSystem {
         String ownerName = item.getOwner().getName();
 
         if (item instanceof Folder) {
-            return String.format("%s %s %s %s %s", type, path, item.getName(), ownerID, ownerName);
+            return String.format("[%s]\t %s %s %s %s", type, path, item.getName(), ownerID, ownerName);
         } else if (item instanceof File) {
             String extension = ((File) item).getExtension();
-            return String.format("%s %s %s %s %s %s", type, path, item.getName(), ownerID, ownerName, extension);
+            return String.format("[%s]  \t %s %s %s %s %s", type, path, item.getName(), ownerID, ownerName, extension);
         }
 
         return ""; // 不是有效的 FolderItem

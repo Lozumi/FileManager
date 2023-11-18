@@ -28,6 +28,7 @@ public class Folder extends FolderItem implements Iterable<FolderItem> {
     public int getNumberOfFolderItems() {
         int count = folderItemList.size();
         for (FolderItem item : folderItemList) {
+            count++;
             if (item instanceof Folder) {
                 // 递归调用以获取子文件夹中的项目数
                 count += ((Folder) item).getNumberOfFolderItems();
