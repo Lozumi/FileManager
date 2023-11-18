@@ -39,6 +39,15 @@ public class FileSystem {
     public static void main(String[] args) throws IOException {
         FileSystem fileSystem = new FileSystem();
         fileSystem.displayFolderItemInfo();
+
+        // 遍历所有Folder，打印名称和getNumberOfFolderItems
+        stdOut.println("\n文件夹深度查询：");
+        for (FolderItem item : fileSystem.folderItemList) {
+            if (item instanceof Folder) {
+                Folder folder = (Folder) item;
+                System.out.println(folder.getName()+"包含的FolderItem数量: " + folder.getNumberOfFolderItems());
+            }
+        }
     }
 
     public void loadFolderItemFromFile(String fileName) {
