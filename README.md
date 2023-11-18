@@ -9,9 +9,9 @@ A java project for exam 2.
 ### Classes
 - [ ] FileSystem
 - [ ] Folder
-- [ ] FolderItem
+- [x] FolderItem
 - [ ] FIle
-- [ ] Owner
+- [x] Owner
 
 ### Interface
 - [ ] java.long.Iterable<FolderItem>
